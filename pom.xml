@@ -130,22 +130,6 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.jsonschema2pojo</groupId>
-                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
-                <version>1.2.2</version>
-                <configuration>
-                    <sourceDirectory>C:/Users/giova/Documents/Livraria1/src/main/java/giovanna/projeto/livraria1/resources/schemas</sourceDirectory>
-                    <targetPackage>com.example.types</targetPackage>
-                </configuration>                                              
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
         <resources>
             <resource>
