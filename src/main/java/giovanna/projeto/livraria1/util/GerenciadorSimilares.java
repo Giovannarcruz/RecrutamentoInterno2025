@@ -4,7 +4,6 @@ package giovanna.projeto.livraria1.util;
 import giovanna.projeto.livraria1.model.Livro;
 import giovanna.projeto.livraria1.services.LivroService;
 import giovanna.projeto.livraria1.services.LivroSimilaresService;
-import giovanna.projeto.livraria1.util.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,15 +12,22 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author giova
+ * Classe responsável por gerenciar o cálculo de similaridades entre livros no banco de dados.
+ * A classe realiza a comparação de livros dentro do mesmo gênero e adiciona as relações de similaridade.
+ * <p>
+ * O cálculo de similaridade envolve a busca de livros do mesmo gênero e a verificação se já existe uma relação de similaridade entre os livros.
+ * Se não existir, a similaridade é adicionada para ambos os livros.
+ * </p>
  */
 public class GerenciadorSimilares {
     private static final Logger LOGGER = Logger.getLogger(GerenciadorSimilares.class.getName());
 
     /**
+     * Calcula as similaridades para todos os livros cadastrados no sistema.
+     * Este método percorre todos os livros e, para cada um, busca outros livros do mesmo gênero.
+     * Se não houver uma relação de similaridade entre os livros, ela é criada.
      *
-     * @throws Exception
+     * @throws Exception Se ocorrer um erro durante o processo de cálculo das similaridades.
      */
     public static void calcularSimilaridadesParaLivrosExistentes() throws Exception {
         LivroService livroService = new LivroService(); // Instancia o serviço *fora* do try-with-resources da transação

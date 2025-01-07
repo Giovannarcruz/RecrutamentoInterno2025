@@ -21,9 +21,15 @@ import net.sf.jasperreports.engine.JRException;
 /**
  * Classe responsável por exibir relatórios de livros filtrados por gênero.
  * Permite visualizar os resultados em uma tabela e salvar o relatório em formato XLS.
+ * <p>
+ * Esta classe fornece uma interface para que o usuário possa filtrar livros por gênero,
+ * atualizar os resultados na tabela e salvar o relatório gerado em formato XLS.
+ * </p>
  */
 public class TelaRelatorioGenero extends JPanel {
-
+    /**
+     * Variáveis utilizadas para a classe em questão.
+     */
     private final JTextField txtGenero; // Campo para entrada de gêneros
     private final JButton btnAtualizar, btnSalvar; // Botões para atualizar e salvar relatório
     private final JTable tabelaRelatorio; // Tabela para exibição dos dados
@@ -31,7 +37,7 @@ public class TelaRelatorioGenero extends JPanel {
     private List<Genero> generos; // Lista de gêneros para autocomplete
     private final JPopupMenu popupGenero = new JPopupMenu(); // Popup para autocomplete
 
-    /**
+     /**
      * Construtor para inicializar o painel de relatório.
      * Configura os componentes visuais e as ações associadas.
      */
@@ -68,7 +74,7 @@ public class TelaRelatorioGenero extends JPanel {
 
     /**
      * Atualiza os dados da tabela com base nos gêneros informados.
-     *
+     * 
      * @param e Evento de ação disparado pelo botão "Atualizar".
      */
     private void atualizarRelatorio(ActionEvent e) {

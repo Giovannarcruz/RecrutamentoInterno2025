@@ -1,4 +1,3 @@
-
 package giovanna.projeto.livraria1.model;
 
 import java.util.LinkedHashMap;
@@ -14,7 +13,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Optional;
 
 /**
- *
+ * Representa a estrutura de resposta retornada pela API Open Library ao consultar livros.
+ * Contém informações como número total de resultados, documentos retornados (livros), e outros metadados.
+ * Esta classe é gerada a partir de um esquema JSON.
+ * 
  * @author Giovanna
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -42,11 +44,12 @@ public class OpenLibraryBook {
     @JsonProperty("offset")
     private Object offset;
     @JsonIgnore
-    private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+    private final Map<String, Object> additionalProperties = new LinkedHashMap<>();
 
     /**
+     * Obtém o número total de resultados encontrados pela API.
      *
-     * @return
+     * @return O número total de resultados encontrados.
      */
     @JsonProperty("numFound")
     public Integer getNumFound() {
@@ -54,8 +57,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Define o número total de resultados encontrados pela API.
      *
-     * @param numFound
+     * @param numFound O número de resultados.
      */
     @JsonProperty("numFound")
     public void setNumFound(Integer numFound) {
@@ -63,8 +67,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Obtém o índice de início dos resultados retornados.
      *
-     * @return
+     * @return O índice inicial dos resultados.
      */
     @JsonProperty("start")
     public Integer getStart() {
@@ -72,8 +77,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Define o índice de início dos resultados retornados.
      *
-     * @param start
+     * @param start O índice inicial.
      */
     @JsonProperty("start")
     public void setStart(Integer start) {
@@ -81,8 +87,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Indica se o número de resultados encontrados é exato.
      *
-     * @return
+     * @return {@code true} se o número de resultados é exato; {@code false} caso contrário.
      */
     @JsonProperty("numFoundExact")
     public Boolean getNumFoundExact() {
@@ -90,8 +97,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Define se o número de resultados encontrados é exato.
      *
-     * @param numFoundExact
+     * @param numFoundExact {@code true} para resultados exatos; {@code false} caso contrário.
      */
     @JsonProperty("numFoundExact")
     public void setNumFoundExact(Boolean numFoundExact) {
@@ -99,8 +107,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Obtém a lista de documentos (livros) retornados pela API.
      *
-     * @return docs
+     * @return Uma lista de documentos representando os livros encontrados.
      */
     @JsonProperty("docs")
     public List<Doc> getDocs() {
@@ -108,8 +117,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Define a lista de documentos (livros) retornados pela API.
      *
-     * @param docs
+     * @param docs Uma lista de objetos {@link Doc}.
      */
     @JsonProperty("docs")
     public void setDocs(List<Doc> docs) {
@@ -117,8 +127,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Obtém o ISBN do livro, se disponível.
      *
-     * @return
+     * @return O ISBN do livro.
      */
     @JsonProperty("isbn")
     public String getIsbn() {
@@ -126,8 +137,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Define o ISBN do livro.
      *
-     * @param isbn
+     * @param isbn O ISBN do livro.
      */
     @JsonProperty("isbn")
     public void setIsbn(String isbn) {
@@ -135,8 +147,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Obtém o valor do campo "offset" retornado pela API.
      *
-     * @return
+     * @return O valor do offset.
      */
     @JsonProperty("offset")
     public Object getOffset() {
@@ -144,8 +157,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Define o valor do campo "offset" retornado pela API.
      *
-     * @param offset
+     * @param offset O valor do offset.
      */
     @JsonProperty("offset")
     public void setOffset(Object offset) {
@@ -153,8 +167,9 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Obtém propriedades adicionais não mapeadas explicitamente nos campos desta classe.
      *
-     * @return
+     * @return Um mapa de propriedades adicionais.
      */
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -162,25 +177,29 @@ public class OpenLibraryBook {
     }
 
     /**
+     * Adiciona uma propriedade adicional não mapeada explicitamente nos campos desta classe.
      *
-     * @param name
-     * @param value
+     * @param name O nome da propriedade.
+     * @param value O valor da propriedade.
      */
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
     /**
-     * Retorna o primeiro documento da lista de docs, se existir.
-     * @return 
+     * Obtém o primeiro documento da lista de documentos retornados.
+     *
+     * @return Um {@link Optional} contendo o primeiro {@link Doc}, ou vazio se a lista estiver vazia.
      */
     public Optional<Doc> getFirstDoc() {
         return docs != null && !docs.isEmpty() ? Optional.of(docs.get(0)) : Optional.empty();
     }
 
     /**
+     * Retorna uma representação em string dos dados armazenados nesta classe.
      *
-     * @return
+     * @return Uma string representando os valores armazenados.
      */
     @Override
     public String toString() {
@@ -188,38 +207,37 @@ public class OpenLibraryBook {
         sb.append(OpenLibraryBook.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("numFound");
         sb.append('=');
-        sb.append(((this.numFound == null)?"<null>":this.numFound));
+        sb.append(((this.numFound == null) ? "<null>" : this.numFound));
         sb.append(',');
         sb.append("start");
         sb.append('=');
-        sb.append(((this.start == null)?"<null>":this.start));
+        sb.append(((this.start == null) ? "<null>" : this.start));
         sb.append(',');
         sb.append("numFoundExact");
         sb.append('=');
-        sb.append(((this.numFoundExact == null)?"<null>":this.numFoundExact));
+        sb.append(((this.numFoundExact == null) ? "<null>" : this.numFoundExact));
         sb.append(',');
         sb.append("docs");
         sb.append('=');
-        sb.append(((this.docs == null)?"<null>":this.docs));
+        sb.append(((this.docs == null) ? "<null>" : this.docs));
         sb.append(',');
         sb.append("isbn");
         sb.append('=');
-        sb.append(((this.isbn == null)?"<null>":this.isbn));
+        sb.append(((this.isbn == null) ? "<null>" : this.isbn));
         sb.append(',');
         sb.append("offset");
         sb.append('=');
-        sb.append(((this.offset == null)?"<null>":this.offset));
+        sb.append(((this.offset == null) ? "<null>" : this.offset));
         sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');
-        sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
+        sb.append(((this.additionalProperties == null) ? "<null>" : this.additionalProperties));
         sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
+        if (sb.charAt((sb.length() - 1)) == ',') {
+            sb.setCharAt((sb.length() - 1), ']');
         } else {
             sb.append(']');
         }
         return sb.toString();
     }
-
 }

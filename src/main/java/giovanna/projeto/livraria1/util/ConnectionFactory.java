@@ -53,18 +53,12 @@ public class ConnectionFactory {
             throw new RuntimeException("Driver do PostgreSQL não foi localizado!",ex);
         }
     }
-    
-    /**
-     * Método que estabelece a conexão com o banco de dados utilizando as credenciais informadas no "DBConfig.properties".
-     * @return Um objeto connection que representa a conexão com o banco de dados.
-     * @throws SQLException se houver algum problema na conexão.
-     */
     private static Connection connection; 
 
     /**
-     *
-     * @return
-     * @throws SQLException
+     * Método para buscar a conexão.
+     * @return a conexão com o banco.
+     * @throws SQLException se houver algum problema na conexão
      */
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {

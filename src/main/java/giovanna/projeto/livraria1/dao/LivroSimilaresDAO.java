@@ -22,17 +22,7 @@ import java.util.logging.Logger;
 public class LivroSimilaresDAO {
     // Logger para registrar erros e informações de execução
     private static final Logger LOGGER = Logger.getLogger(LivroSimilaresDAO.class.getName());
-    //Conexão com o banco de dados
-    private Connection connection;
 
-    /**
-     * Construtor que recebe uma conexão com o banco de dados.
-     * 
-     * @param connection A conexão com o banco de dados.
-     */
-    public LivroSimilaresDAO(Connection connection) {
-        this.connection = connection;
-    }
     /**
      * Construtor padrão.
      */

@@ -152,9 +152,6 @@ public class LivroDialog extends JDialog {
     /**
      * Preenche os campos do formulário com os dados do livro em edição.
      */
-    /**
-     * Preenche os campos do formulário com os dados do livro em edição.
-     */
     private void preencherCampos() {
         if (livro == null) {
             return;
@@ -253,7 +250,14 @@ public class LivroDialog extends JDialog {
         return livroParaSalvar;
     }
 
-    // Métodos de gerenciamento de livros similares omitidos (iguais ao código inicial)
+     /**
+     * Inclui livros similares ao livro atual. Exibe um diálogo para selecionar livros similares,
+     * e os adiciona à lista de livros similares do livro atual.
+     * <p>
+     * Este método verifica se um livro foi previamente salvo, exibe um diálogo de seleção
+     * e, após selecionar os livros, adiciona as relações de similaridade ao banco de dados.
+     * </p>
+     */
     private void incluirLivrosSimilares() {
         if (livro == null) {
             JOptionPane.showMessageDialog(this, "Salve o livro antes de incluir livros similares.");
@@ -273,7 +277,14 @@ public class LivroDialog extends JDialog {
             JOptionPane.showMessageDialog(this, "Erro ao incluir livro similar: " + ex.getMessage());
         }
     }
-
+     /**
+     * Exclui um livro similar da lista de livros similares do livro atual.
+     * <p>
+     * Este método verifica se um livro foi selecionado na tabela de livros similares,
+     * e, caso um livro similar tenha sido selecionado, ele é removido da lista de livros
+     * similares associados ao livro atual.
+     * </p>
+     */
     private void excluirLivrosSimilares() {
         int linhaSelecionada = tabelaLivrosSimilares.getSelectedRow();
         if (linhaSelecionada == -1) {

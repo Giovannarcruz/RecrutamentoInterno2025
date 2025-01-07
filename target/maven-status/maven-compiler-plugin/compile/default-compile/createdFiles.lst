@@ -1,7 +1,6 @@
 giovanna\projeto\livraria1\services\LivroSimilaresService.class
 giovanna\projeto\livraria1\services\GeneroService.class
 giovanna\projeto\livraria1\dao\GeneroDAO.class
-giovanna\projeto\livraria1\util\GoogleDriveDownloader.class
 giovanna\projeto\livraria1\util\AutoComplete.class
 giovanna\projeto\livraria1\view\LivroDialog.class
 giovanna\projeto\livraria1\Livraria1Application.class
@@ -29,4 +28,3 @@ giovanna\projeto\livraria1\view\JanelaPrincipal.class
 giovanna\projeto\livraria1\model\Genero.class
 giovanna\projeto\livraria1\model\LivroSimilares.class
 giovanna\projeto\livraria1\util\AutoComplete$1.class
-giovanna\projeto\livraria1\util\LogtoFile.class

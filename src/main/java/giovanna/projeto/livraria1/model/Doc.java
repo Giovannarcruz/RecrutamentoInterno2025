@@ -12,6 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import static org.hibernate.query.sqm.SqmTreeTransformationLogger.LOGGER;
+import org.jboss.logging.Logger;
 
 /**
  * Representa um documento (por exemplo, um livro) com informações sobre o autor,
@@ -44,7 +46,7 @@ public class Doc {
     private List<String> isbn; // Lista de ISBNs associados ao documento
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new LinkedHashMap<>(); // Propriedades adicionais
+    private final Map<String, Object> additionalProperties = new LinkedHashMap<>(); // Propriedades adicionais
 
     /**
      * Obtém a lista de nomes de autores do documento.
@@ -235,8 +237,8 @@ public class Doc {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     return LocalDate.parse(rawDate, formatter); // Data completa
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NumberFormatException e) {
+            LOGGER.log(Logger.Level.ERROR, "Data inválida", e);
             }
         }
         return null;

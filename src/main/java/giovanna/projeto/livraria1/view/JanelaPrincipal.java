@@ -13,11 +13,16 @@ import javax.xml.rpc.ServiceException;
  * Janela principal da aplicação, que contém o menu e um JTabbedPane para exibir
  * as telas como abas. Permite ao usuário navegar entre diferentes seções do
  * sistema.
+ * 
+ * Esta classe gerencia a interface principal do sistema, incluindo a criação de
+ * menus e a navegação entre diferentes abas que exibem funcionalidades do sistema.
+ * 
+ * @author Giovanna
  */
 public class JanelaPrincipal extends JFrame {
 
-    private JTabbedPane tabbedPane; // Contêiner de abas
-    private Map<String, JPanel> abasAbertas; // Controle das abas abertas
+    private final JTabbedPane tabbedPane; // Contêiner de abas
+    private final Map<String, JPanel> abasAbertas; // Controle das abas abertas
 
     /**
      * Construtor da JanelaPrincipal. Inicializa os componentes principais da
