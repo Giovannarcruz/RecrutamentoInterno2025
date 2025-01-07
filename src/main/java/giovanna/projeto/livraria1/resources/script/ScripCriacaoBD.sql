@@ -1,7 +1,4 @@
--- Database: Livraria
-
--- DROP DATABASE IF EXISTS "Livraria";
-
+-- Criação do banco de dados
 CREATE DATABASE "Livraria"
     WITH
     OWNER = postgres
@@ -15,101 +12,84 @@ CREATE DATABASE "Livraria"
 COMMENT ON DATABASE "Livraria"
     IS 'Base de dados criada para o cenário do recrutamento interno para a vaga de Programador Java Jr.';
 
+-- Conectando no banco de dados Livraria
+\c "Livraria"
 
-
--- Table: public.generos
-
--- DROP TABLE IF EXISTS public.generos;
-
+-- Criação da tabela de gêneros
 CREATE TABLE IF NOT EXISTS public.generos
 (
-    id integer NOT NULL DEFAULT nextval('generos_id_seq'::regclass),
-    nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT generos_pkey PRIMARY KEY (id),
-    CONSTRAINT generos_nome_key UNIQUE (nome)
-)
+    id serial PRIMARY KEY,
+    nome character varying(50) NOT NULL UNIQUE
+);
 
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.generos
-    OWNER to postgres;
-
-    -- Table: public.livros
-
--- DROP TABLE IF EXISTS public.livros;
-
+-- Criação da tabela de livros
 CREATE TABLE IF NOT EXISTS public.livros
 (
-    etiqueta_livro smallint NOT NULL,
-    titulo character varying(80) COLLATE pg_catalog."default",
-    autor character varying(80) COLLATE pg_catalog."default",
-    editora character varying(50) COLLATE pg_catalog."default",
-    genero character varying(50) COLLATE pg_catalog."default",
-    isbn character varying(13) COLLATE pg_catalog."default",
+    etiqueta_livro smallint PRIMARY KEY,
+    titulo character varying(80),
+    autor character varying(80),
+    editora character varying(50),
+    genero character varying(50),
+    isbn character varying(13) UNIQUE,
     data_publicacao date,
     data_inclusao timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    data_alteracao timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT livro_pkey PRIMARY KEY (etiqueta_livro),
-    CONSTRAINT livro_isbn_key UNIQUE (isbn)
-)
+    data_alteracao timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+);
 
-TABLESPACE pg_default;
+-- Função para atualizar a data de inclusão
+CREATE OR REPLACE FUNCTION public.fn_atualizar_data_inclusao() 
+RETURNS trigger AS $$
+BEGIN
+    NEW.data_inclusao = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
-ALTER TABLE IF EXISTS public.livros
-    OWNER to postgres;
+-- Função para atualizar a data de alteração
+CREATE OR REPLACE FUNCTION public.fn_atualizar_data_alteracao() 
+RETURNS trigger AS $$
+BEGIN
+    NEW.data_alteracao = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
--- Trigger: trg_data_alteracao
+-- Função para gerar a etiqueta do livro
+CREATE OR REPLACE FUNCTION public.fn_gerar_etiqueta() 
+RETURNS trigger AS $$
+BEGIN
+    NEW.etiqueta_livro = nextval('livros_etiqueta_livro_seq');
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
--- DROP TRIGGER IF EXISTS trg_data_alteracao ON public.livros;
-
+-- Criação dos triggers
 CREATE TRIGGER trg_data_alteracao
-    BEFORE UPDATE 
-    ON public.livros
+    BEFORE UPDATE ON public.livros
     FOR EACH ROW
     EXECUTE FUNCTION public.fn_atualizar_data_alteracao();
 
--- Trigger: trg_data_inclusao
-
--- DROP TRIGGER IF EXISTS trg_data_inclusao ON public.livros;
-
 CREATE TRIGGER trg_data_inclusao
-    BEFORE INSERT
-    ON public.livros
+    BEFORE INSERT ON public.livros
     FOR EACH ROW
     EXECUTE FUNCTION public.fn_atualizar_data_inclusao();
 
--- Trigger: trg_gerar_etiqueta
-
--- DROP TRIGGER IF EXISTS trg_gerar_etiqueta ON public.livros;
-
 CREATE TRIGGER trg_gerar_etiqueta
-    BEFORE INSERT
-    ON public.livros
+    BEFORE INSERT ON public.livros
     FOR EACH ROW
     EXECUTE FUNCTION public.fn_gerar_etiqueta();
 
-
-
-    -- Table: public.livros_semelhantes
-
--- DROP TABLE IF EXISTS public.livros_semelhantes;
-
+-- Criação da tabela de livros semelhantes
 CREATE TABLE IF NOT EXISTS public.livros_semelhantes
 (
     etiqueta_livro integer NOT NULL,
     etiqueta_semelhante integer NOT NULL,
-    CONSTRAINT livros_semelhantes_pkey PRIMARY KEY (etiqueta_livro, etiqueta_semelhante),
-    CONSTRAINT livros_semelhantes_etiqueta_livro_fkey FOREIGN KEY (etiqueta_livro)
-        REFERENCES public.livros (etiqueta_livro) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE CASCADE,
-    CONSTRAINT livros_semelhantes_etiqueta_semelhante_fkey FOREIGN KEY (etiqueta_semelhante)
-        REFERENCES public.livros (etiqueta_livro) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE CASCADE
-)
+    PRIMARY KEY (etiqueta_livro, etiqueta_semelhante),
+    FOREIGN KEY (etiqueta_livro) REFERENCES public.livros (etiqueta_livro) ON DELETE CASCADE,
+    FOREIGN KEY (etiqueta_semelhante) REFERENCES public.livros (etiqueta_livro) ON DELETE CASCADE
+);
 
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public.livros_semelhantes
-    OWNER to postgres;
+-- Ajustar propriedade de ownership das tabelas
+ALTER TABLE IF EXISTS public.generos OWNER TO postgres;
+ALTER TABLE IF EXISTS public.livros OWNER TO postgres;
+ALTER TABLE IF EXISTS public.livros_semelhantes OWNER TO postgres;
