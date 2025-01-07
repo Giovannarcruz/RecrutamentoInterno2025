@@ -1,0 +1,99 @@
+{
+  "publishers": [
+    "Bantam Books",
+    "Bantam"
+  ],
+  "identifiers": {
+    "amazon": [
+      "0553808044"
+    ],
+    "goodreads": [
+      "59644004"
+    ]
+  },
+  "description": "Published in celebration of the twentieth anniversary of George R. R. Martin’s landmark series, this lavishly illustrated special edition of A Game of Thrones—featuring gorgeous full-page artwork as well as black-and-white illustrations in every chapter—revitalizes the fantasy masterpiece that became a cultural phenomenon. And now the mystery, intrigue, romance, and adventure of this magnificent saga come to life as never before.\r\n \r\nA GAME OF THRONES\r\nA SONG OF ICE AND FIRE: BOOK ONE\r\nWith a special foreword by John Hodgman\r\n \r\nWinter is coming, and in the frozen wastes to the North, sinister and supernatural forces are massing beyond the kingdom’s protective Wall. At the center of the conflict lie the Starks of Winterfell, a family as harsh and unyielding as the land they were born to. Sweeping from a region of brutal cold to a distant summertime kingdom of epicurean plenty, here is a tale rife with plots and counterplots, tragedy and betrayal, victory and terror, as each faction endeavors to win that deadliest of conflicts: the game of thrones.\r\n\r\n--back cover",
+  "contributors": [
+    {
+      "role": "Foreword",
+      "name": "John Hodgman"
+    },
+    {
+      "name": "Jeffrey L. Ward",
+      "role": "Map and Artwork"
+    }
+  ],
+  "series": [
+    "A Song of Ice and Fire, #1"
+  ],
+  "covers": [14818001, 12373718],
+  "physical_format": "Hardcover",
+  "key": "/books/OL26425706M",
+  "publish_places": [
+    "New York"
+  ],
+  "languages": [
+    {
+      "key": "/languages/eng"
+    }
+  ],
+  "classifications": {
+
+  },
+  "source_records": [
+    "marc:marc_openlibraries_sanfranciscopubliclibrary/sfpl_chq_2018_12_24_run05.mrc:399077265:4844",
+    "bwb:9780553808049",
+    "promise:bwb_daily_pallets_2021-05-14",
+    "amazon:0553808044"
+  ],
+  "title": "A Game of Thrones",
+  "notes": "US / CAN Edition",
+  "number_of_pages": 881,
+  "edition_name": "20th Anniversary Illustrated Edition (1)",
+  "local_id": [
+    "urn:sfpl:31223121093919",
+    "urn:sfpl:31223121093976",
+    "urn:sfpl:31223121093984",
+    "urn:sfpl:31223121093927",
+    "urn:sfpl:31223121093935",
+    "urn:sfpl:31223121093943",
+    "urn:sfpl:31223121093950",
+    "urn:sfpl:31223121093968",
+    "urn:bwbsku:O7-CIN-185"
+  ],
+  "publish_date": "2016",
+  "copyright_date": "2016",
+  "works": [
+    {
+      "key": "/works/OL257943W"
+    }
+  ],
+  "type": {
+    "key": "/type/edition"
+  },
+  "physical_dimensions": "9-1/8 x 6-1/8 x  inches",
+  "pagination": "xi, 880p.",
+  "subtitle": "Book One of A Song of Ice and Fire",
+  "ocaid": "gameofthronesill0000mart",
+  "isbn_10": [
+    "0553808044"
+  ],
+  "isbn_13": [
+    "9780553808049"
+  ],
+  "oclc_numbers": [
+    "965877704"
+  ],
+  "lc_classifications": [
+    "PS3563.A7239G36 2016"
+  ],
+  "latest_revision": 13,
+  "revision": 13,
+  "created": {
+    "type": "/type/datetime",
+    "value": "2018-02-09T18:24:10.899497"
+  },
+  "last_modified": {
+    "type": "/type/datetime",
+    "value": "2024-09-19T13:44:30.885635"
+  }
+}

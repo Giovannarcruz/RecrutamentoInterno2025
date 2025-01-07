@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: giovanna.projeto.livraria1.src.util.ConnectionFactoryTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.251 s -- in giovanna.projeto.livraria1.src.util.ConnectionFactoryTest

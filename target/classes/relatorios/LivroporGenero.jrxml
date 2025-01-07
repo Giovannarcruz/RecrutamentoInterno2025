@@ -1,0 +1,318 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="LivroporGenero" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="868819c0-2e1e-457b-84c5-82067f527855">
+	<style name="Title" fontName="Times New Roman" fontSize="50.0" bold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18.0"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12.0" bold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12.0"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle backcolor="#E6DAC3">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#F5F5DC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<dataset name="tableDataset" uuid="2c673249-5a57-43d7-857f-5c9074a60db0">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="data_publicacao" class="java.sql.Date"/>
+		<parameter name="etiqueta_livro" class="java.lang.Integer"/>
+		<parameter name="titulo" class="java.lang.String"/>
+		<parameter name="isbn" class="java.lang.String"/>
+		<parameter name="autor" class="java.lang.String"/>
+		<parameter name="editora" class="java.lang.String"/>
+		<parameter name="genero" class="java.lang.String"/>
+		<query language="sql"><![CDATA[SELECT etiqueta_livro,
+	titulo,
+	autor,
+	editora,
+	genero,
+	isbn,
+	data_publicacao
+FROM livros
+WHERE 
+	 livros.genero = $P{genero}]]></query>
+		<field name="etiqueta_livro" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="etiqueta_livro"/>
+			<property name="com.jaspersoft.studio.field.label" value="etiqueta_livro"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="titulo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+			<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="autor" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="autor"/>
+			<property name="com.jaspersoft.studio.field.label" value="autor"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="editora" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="editora"/>
+			<property name="com.jaspersoft.studio.field.label" value="editora"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="genero" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="genero"/>
+			<property name="com.jaspersoft.studio.field.label" value="genero"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="isbn" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="isbn"/>
+			<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="data_publicacao" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.name" value="data_publicacao"/>
+			<property name="com.jaspersoft.studio.field.label" value="data_publicacao"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<sortField name="titulo"/>
+	</dataset>
+	<dataset name="Dataset1" uuid="aa700e5f-b8cf-4ff1-b1ec-297f066cabfd">
+		<property name="com.jaspersoft.studio.data.sql.tables" value="bGl2cm9zICwxNSwxNSxmNDYyNjRjNS1hOTFmLTRiNDktYjM1MS02NjIyOTgyNjU4MTM7"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+		<parameter name="data_publicacao" class="java.sql.Date"/>
+		<parameter name="etiqueta_livro" class="java.lang.Integer"/>
+		<parameter name="titulo" class="java.lang.String"/>
+		<parameter name="isbn" class="java.lang.String"/>
+		<parameter name="autor" class="java.lang.String"/>
+		<parameter name="editora" class="java.lang.String"/>
+		<parameter name="genero" class="java.lang.String"/>
+		<query language="SQL"><![CDATA[SELECT etiqueta_livro,
+	titulo,
+	autor,
+	editora,
+	genero,
+	isbn,
+	data_publicacao,
+	genero
+FROM livros
+WHERE 
+	 livros.genero = $P{genero}]]></query>
+		<field name="etiqueta_livro" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="etiqueta_livro"/>
+			<property name="com.jaspersoft.studio.field.label" value="etiqueta_livro"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="titulo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+			<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="autor" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="autor"/>
+			<property name="com.jaspersoft.studio.field.label" value="autor"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="editora" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="editora"/>
+			<property name="com.jaspersoft.studio.field.label" value="editora"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="genero" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="genero"/>
+			<property name="com.jaspersoft.studio.field.label" value="genero"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="isbn" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="isbn"/>
+			<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="data_publicacao" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.name" value="data_publicacao"/>
+			<property name="com.jaspersoft.studio.field.label" value="data_publicacao"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<field name="COLUMN_8" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="genero"/>
+			<property name="com.jaspersoft.studio.field.label" value="genero"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="livros"/>
+		</field>
+		<sortField name="titulo"/>
+		<group name="autor">
+			<expression><![CDATA[$F{autor}]]></expression>
+		</group>
+		<group name="genero">
+			<expression><![CDATA[$F{genero}]]></expression>
+		</group>
+	</dataset>
+	<parameter name="genero" class="java.lang.String"/>
+	<parameter name="editora" class="java.lang.String"/>
+	<parameter name="autor" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="etiqueta_livro" class="java.lang.Integer"/>
+	<parameter name="data_publicacao" class="java.sql.Date"/>
+	<query language="sql"><![CDATA[]]></query>
+	<title height="136" splitType="Stretch">
+		<element kind="staticText" uuid="237ff744-a928-40c9-9236-74c6fb6e5072" x="80" y="0" width="400" height="80" fontSize="30.0" pdfFontName="Times-Roman" vTextAlign="Middle" style="Title">
+			<text><![CDATA[Relatório de livro por gênero]]></text>
+		</element>
+	</title>
+	<pageFooter height="25" splitType="Stretch">
+		<element kind="frame" uuid="f370a57d-f130-4e84-b9f5-c53b431e92db" mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF">
+			<element kind="textField" uuid="c6c05541-d642-485d-8bdb-cab31d35d221" x="533" y="0" width="40" height="20" forecolor="#736343" fontSize="10.0" evaluationTime="Report" bold="false" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+			</element>
+			<element kind="textField" uuid="cbd3293d-23a4-436e-ac43-493d867d2b16" x="453" y="0" width="80" height="20" forecolor="#736343" fontSize="10.0" bold="false" hTextAlign="Right" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+			</element>
+			<element kind="textField" uuid="3a6deb2b-90af-40e2-b90d-d18cb599e55a" x="22" y="1" width="197" height="20" forecolor="#736343" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" bold="false" vTextAlign="Middle" style="Column header">
+				<expression><![CDATA[new java.util.Date()]]></expression>
+			</element>
+		</element>
+	</pageFooter>
+	<summary height="267" splitType="Stretch">
+		<element kind="component" uuid="dd3efa06-999d-4e54-9a93-275f6494cefa" x="1" y="20" width="551" height="247">
+			<component kind="table">
+				<datasetRun uuid="06a40f4a-adfc-4e8d-b8c8-cb9620f67f98" subDataset="Dataset1">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<column kind="single" uuid="6419b43b-f4ac-4cff-964b-59aba81628b2" width="50">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="a8fc1b74-6fab-41d7-b63c-b8a68201a4b7" x="0" y="0" width="50" height="30">
+							<text><![CDATA[Etiqueta]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="6642aa91-2129-4da1-ae0e-d26660e738c9" x="0" y="0" width="50" height="30">
+							<expression><![CDATA[$F{etiqueta_livro}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="b6b9186e-25ad-442f-8097-9fb62d8226a1" width="92">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="a6ff4b49-2b0c-44c4-8a4d-7944095d0b10" x="0" y="0" width="92" height="30">
+							<text><![CDATA[Título]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="8ceb20d5-41c2-4d20-9032-1d9437d35bb8" x="0" y="0" width="92" height="30">
+							<expression><![CDATA[$F{titulo}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="5d932514-2f34-4b3e-a10d-eef9be15117d" width="74">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="6a43f6ee-d7e4-4e2f-accc-83eef04659e9" x="0" y="0" width="74" height="30">
+							<text><![CDATA[Autor]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="e195ca80-c098-4c5a-9aa5-83cebb29046e" x="0" y="0" width="74" height="30">
+							<expression><![CDATA[$F{autor}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="ea1e8e9d-fc65-4b51-a8e9-de422f48272c" width="70">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="37299177-64e3-4403-865b-31ba814eabd6" x="0" y="0" width="70" height="30">
+							<text><![CDATA[Editora]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="cf87c6b0-2ad8-441d-a5a1-bce46a17b33c" x="0" y="0" width="70" height="30">
+							<expression><![CDATA[$F{editora}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="bca441b8-3fe7-4511-b820-61bb95aa6d8b" width="68">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="a6c39d1b-c336-4fd9-921f-fd5323b3b5f9" x="0" y="0" width="68" height="30">
+							<text><![CDATA[Gênero]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="4710d08e-c7d2-4806-82df-37e2cc3f0e02" x="0" y="0" width="68" height="30">
+							<expression><![CDATA[$F{genero}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="1983eb78-5957-41f2-ab60-b31fa783fbc5" width="100">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="9ceed72e-e301-40d3-96f6-fa097036b6ad" x="0" y="0" width="100" height="30">
+							<text><![CDATA[Isbn]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="817b0bf6-f66f-458d-be82-e9e6fdf67d0b" x="0" y="0" width="100" height="30">
+							<expression><![CDATA[$F{isbn}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="6f30f579-f2c1-4cde-a3eb-fc94237e583b" width="132">
+					<tableHeader height="30" style="Table_TH"/>
+					<tableFooter height="30" style="Table_TH"/>
+					<columnHeader height="30" style="Table_CH">
+						<element kind="staticText" uuid="6bfd0efd-0c4a-41c3-abad-8653dfd3ebdf" x="0" y="0" width="132" height="30">
+							<text><![CDATA[Data de publicação]]></text>
+						</element>
+					</columnHeader>
+					<columnFooter height="30" style="Table_CH"/>
+					<detailCell height="30" style="Table_TD">
+						<element kind="textField" uuid="230aa4c9-1cb5-48bd-a67a-9c9213a2d0ca" x="0" y="0" width="132" height="30">
+							<expression><![CDATA[$F{data_publicacao}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+			</component>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+			<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+			<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+		</element>
+		<property name="local_mesure_unitheight" value="pixel"/>
+	</summary>
+</jasperReport>
