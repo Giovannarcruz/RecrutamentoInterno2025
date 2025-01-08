@@ -48,13 +48,24 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Função para gerar a etiqueta do livro
-CREATE OR REPLACE FUNCTION public.fn_gerar_etiqueta() 
-RETURNS trigger AS $$
+-- FUNCTION: public.fn_gerar_etiqueta()
+-- DROP FUNCTION IF EXISTS public.fn_gerar_etiqueta();
+CREATE OR REPLACE FUNCTION public.fn_gerar_etiqueta()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
 BEGIN
-    NEW.etiqueta_livro = nextval('livros_etiqueta_livro_seq');
-    RETURN NEW;
+	-- cálculo para gerar um número aleatório de 4 dígitos, new retorna a coluna com o valor alterado.
+	NEW.etiqueta_livro := FLOOR(random()*(9999-1000+1+1000));
+	RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$BODY$;
+
+ALTER FUNCTION public.fn_gerar_etiqueta()
+    OWNER TO postgres;
+
 
 -- Criação dos triggers
 CREATE TRIGGER trg_data_alteracao
